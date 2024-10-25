@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -30,6 +31,24 @@ namespace İnterface
             List<EntityLayer>? items = JsonConvert.DeserializeObject<List<EntityLayer>>(json);
 
             return items;
+        }
+
+        public void Save(List<EntityLayer> entityLayers)
+        {
+
+
+            string filePath = Path.Combine(appDirectory, "Itmes.json");
+
+            var json = JsonConvert.SerializeObject(entityLayers, Formatting.Indented);
+
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+            }
+
+            File.WriteAllText(filePath, json);
+
+
         }
     }
 }

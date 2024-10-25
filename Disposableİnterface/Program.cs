@@ -1,35 +1,22 @@
 ﻿
 
 
-using Newtonsoft.Json;
+List<EntityLayer1> layers = new List<EntityLayer1>();
 
-string appDirectory = AppDomain.CurrentDomain.BaseDirectory;
-
-// Define the relative path for the JSON file
-string filePath = Path.Combine(appDirectory, "Theİtems.json");
-
-
-if (File.Exists(filePath) == false)
+for (int i = 11; i <=99; i++)
 {
 
-    Console.WriteLine(@"C:\\Users\\gsli_\\source\\repos\\THYMEK_Practice_Program\\Disposableİnterface\\Theİtems.json");
+    EntityLayer1 entity = new EntityLayer1 { id = i, Name = "asdfsdf", Number = i };
 
-    Console.WriteLine(filePath);
-
-    Console.WriteLine("olmadı amın oglu");
-
-    Console.ReadLine();
-
+    layers.Add(entity);
 }
 
+Thread.Sleep(100);
 
-var json = File.ReadAllText(filePath);
-
-var items = JsonConvert.DeserializeObject<List<EntityLayer1>>(json);
-
-foreach (var item in items)
+foreach (var layer in layers)
 {
-    Console.WriteLine($"ID: {item.id}, Name: {item.Name}, Number: {item.Number}");
+    Console.WriteLine($"Id = {layer.id} --- Number = {layer.Number} --- Name = {layer.Name}");
+    
 }
 public class EntityLayer1
 {

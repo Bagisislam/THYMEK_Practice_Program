@@ -1,32 +1,43 @@
 using System.Data;
+using System.Windows.Forms;
 
 namespace İnterface
 {
     public partial class Form1 : Form
     {
+        DataAccessLayer _dataAccessLayer = new DataAccessLayer();
+        İtemListPage _itemListPage;
         public Form1()
         {
             InitializeComponent();
+
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
-            dataGridView1.Visible = false;
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Open_List_Button_Click(object sender, EventArgs e)
         {
-            DataAccessLayer _dataAccessLayer = new DataAccessLayer();
-
-            dataGridView1.DataSource = _dataAccessLayer.GetAll();
-            // Hide the 'id' column
-            if (dataGridView1.Columns["id"] != null)
+            _itemListPage = new İtemListPage();
+            if (!_itemListPage.IsDisposed)
             {
-                dataGridView1.Columns["id"].Visible = false;
+                _itemListPage.Show();
             }
-            dataGridView1.Visible = true;
+            else
+            {
+                _itemListPage = new İtemListPage();
+                _itemListPage.Show();
+            }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
+
+
 }
