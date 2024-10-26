@@ -1,22 +1,19 @@
 ﻿
+Random random = new Random();
 
-
-List<EntityLayer1> layers = new List<EntityLayer1>();
-
-for (int i = 11; i <=99; i++)
+for (int i = 0; i <1000;i++)
 {
+    var result = random.Next(10,100);
+    if (result == 10 || result == 99)
+    {
+        Console.WriteLine($"10 yada 99 {result}");
+    }
+    if (result == 100|| result == 9)
+    {
+        Console.WriteLine("olmadı");
+    }
 
-    EntityLayer1 entity = new EntityLayer1 { id = i, Name = "asdfsdf", Number = i };
 
-    layers.Add(entity);
-}
-
-Thread.Sleep(100);
-
-foreach (var layer in layers)
-{
-    Console.WriteLine($"Id = {layer.id} --- Number = {layer.Number} --- Name = {layer.Name}");
-    
 }
 public class EntityLayer1
 {
