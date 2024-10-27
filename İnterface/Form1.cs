@@ -69,13 +69,9 @@ namespace İnterface
 
         private int RandomNumberGenerator()
         {
-            Thread.Sleep(100);
+
             Random random = new Random();
-            if (_RandomNumber < 100 && _RandomNumber > 9)
-            {
-                var result = random.Next(10, 100);
-                return result;
-            }
+
 
             return _RandomNumber = random.Next(40, 80);
         }
@@ -94,21 +90,47 @@ namespace İnterface
         {
             if (what == 1)
             {
+                if (ChosenMethod().Number == null || ChosenMethod().Number == 0)
+                {
+                    MessageBox.Show("Please Slowly Press The Buttons");
+                    Thread.Sleep(100);
+                }
+                else
+                {
+                    Name_Lable.Text = string.Empty;
+                    Number_Label.Text = ChosenMethod().Number.ToString();
+                }
 
-                Name_Lable.Text = string.Empty;
-                Number_Label.Text = ChosenMethod().Number.ToString();
+
             }
             if (what == 2)
             {
 
-                Number_Label.Text = "";
-                Name_Lable.Text = ChosenMethod().Name.ToUpper();
+                if (ChosenMethod().Name == null)
+                {
+                    MessageBox.Show("Please Slowly Press The Buttons");
+                    Thread.Sleep(100);
+                }
+                else
+                {
+                    Number_Label.Text = string.Empty;
+                    Name_Lable.Text = ChosenMethod().Name.ToUpper();
+                }
+
             }
             if (what == 3)
             {
+                if (ChosenMethod().Name == null || ChosenMethod().Number == 0)
+                {
+                    MessageBox.Show("Please Slowly Press The Buttons");
+                    Thread.Sleep(100);
+                }
+                else
+                {
+                    Name_Lable.Text = ChosenMethod().Name.ToUpper();
+                    Number_Label.Text = ChosenMethod().Number.ToString();
+                }
 
-                Name_Lable.Text = ChosenMethod().Name.ToUpper();
-                Number_Label.Text = ChosenMethod().Number.ToString();
             }
         }
 
@@ -123,7 +145,7 @@ namespace İnterface
             {
                 _line_İndex = 0;
             }
-            _RandomNumber = RandomNumberGenerator();
+
 
             if (!Switchitems_Checkbox.Checked)
             {
@@ -141,9 +163,9 @@ namespace İnterface
             MessageBox.Show(Random_Checkbox.Checked.ToString());
         }
 
-        private void Reveal_Button_Click(object sender, EventArgs e)
+        private void Reveal_Button_Click_1(object sender, EventArgs e)
         {
-            Thread.Sleep(100);
+            Thread.Sleep(50);
             FinalResult(3);
         }
     }

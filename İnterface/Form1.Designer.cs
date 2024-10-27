@@ -160,7 +160,6 @@
             EditButton.TabIndex = 1;
             EditButton.Text = "Edit";
             EditButton.UseVisualStyleBackColor = true;
-            EditButton.Click += EditButton_Click;
             // 
             // Random_Checkbox
             // 
@@ -184,7 +183,7 @@
             Reveal_Button.TabIndex = 5;
             Reveal_Button.Text = "Reveal";
             Reveal_Button.UseVisualStyleBackColor = false;
-            Reveal_Button.Click += Reveal_Button_Click;
+            Reveal_Button.Click += Reveal_Button_Click_1;
             // 
             // Next_Button
             // 
