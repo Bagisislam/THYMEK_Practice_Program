@@ -1,5 +1,7 @@
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace İnterface
 {
@@ -8,6 +10,7 @@ namespace İnterface
         DataAccessLayer _dataAccessLayer = new DataAccessLayer();
         İtemListPage _itemListPage;
         int _line_İndex = 0;
+        int _RandomNumber = 0;
 
         public Form1()
         {
@@ -19,8 +22,15 @@ namespace İnterface
         private void Form1_Load(object sender, EventArgs e)
         {
 
-            Name_Lable.Text = Line().Name.ToUpper();
-            Number_Label.Text = Line().Number.ToString();
+            if (!Switchitems_Checkbox.Checked)
+            {
+                FinalResult(1);
+            }
+            else
+            {
+                FinalResult(2);
+            }
+
         }
 
         private void Open_List_Button_Click(object sender, EventArgs e)
@@ -39,7 +49,7 @@ namespace İnterface
 
         private EntityLayer Line()
         {
-            
+
             var result = (EntityLayer)_dataAccessLayer.GetAll()[_line_İndex];
 
             return result;
@@ -49,22 +59,92 @@ namespace İnterface
         {
             Random random = new Random();
 
-            var result = (EntityLayer)_dataAccessLayer.GetAll()[random.Next(10,100)];
+
+            var result = (EntityLayer)_dataAccessLayer.GetAll()[_RandomNumber];
 
             return result;
+
+
+        }
+
+        private int RandomNumberGenerator()
+        {
+            Thread.Sleep(100);
+            Random random = new Random();
+            if (_RandomNumber < 100 && _RandomNumber > 9)
+            {
+                var result = random.Next(10, 100);
+                return result;
+            }
+
+            return _RandomNumber = random.Next(40, 80);
+        }
+
+        private EntityLayer ChosenMethod()
+        {
+
+            if (Random_Checkbox.Checked)
+            {
+                return Random();
+            }
+            return Line();
+        }
+
+        private void FinalResult(Int16 what)
+        {
+            if (what == 1)
+            {
+
+                Name_Lable.Text = string.Empty;
+                Number_Label.Text = ChosenMethod().Number.ToString();
+            }
+            if (what == 2)
+            {
+
+                Number_Label.Text = "";
+                Name_Lable.Text = ChosenMethod().Name.ToUpper();
+            }
+            if (what == 3)
+            {
+
+                Name_Lable.Text = ChosenMethod().Name.ToUpper();
+                Number_Label.Text = ChosenMethod().Number.ToString();
+            }
         }
 
         private void Next_Button_Click(object sender, EventArgs e)
         {
+            Thread.Sleep(100);
+
+            _RandomNumber = RandomNumberGenerator();
+
             _line_İndex++;
             if (_line_İndex >= 90)
             {
                 _line_İndex = 0;
             }
+            _RandomNumber = RandomNumberGenerator();
 
-            Name_Lable.Text = Line().Name.ToUpper();
-            Number_Label.Text = Line().Number.ToString();
-            
+            if (!Switchitems_Checkbox.Checked)
+            {
+                FinalResult(1);
+            }
+            else
+            {
+                FinalResult(2);
+            }
+        }
+
+        private void EditButton_Click(object sender, EventArgs e)
+        {
+
+            MessageBox.Show(Random_Checkbox.Checked.ToString());
+        }
+
+        private void Reveal_Button_Click(object sender, EventArgs e)
+        {
+            Thread.Sleep(100);
+            FinalResult(3);
         }
     }
 

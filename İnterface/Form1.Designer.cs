@@ -33,10 +33,10 @@
             AutoSliderGroup = new GroupBox();
             label2 = new Label();
             label1 = new Label();
-            checkBox4 = new CheckBox();
+            AutoSlide_Checkbox = new CheckBox();
             numericUpDown1 = new NumericUpDown();
-            Switchitems_Button = new CheckBox();
-            ShowAnswers_Button = new CheckBox();
+            Switchitems_Checkbox = new CheckBox();
+            ShowAnswers_Checkbox = new CheckBox();
             EditButton = new Button();
             Random_Checkbox = new CheckBox();
             Reveal_Button = new Button();
@@ -62,8 +62,8 @@
             // groupBox1
             // 
             groupBox1.Controls.Add(AutoSliderGroup);
-            groupBox1.Controls.Add(Switchitems_Button);
-            groupBox1.Controls.Add(ShowAnswers_Button);
+            groupBox1.Controls.Add(Switchitems_Checkbox);
+            groupBox1.Controls.Add(ShowAnswers_Checkbox);
             groupBox1.Controls.Add(EditButton);
             groupBox1.Controls.Add(Random_Checkbox);
             groupBox1.Location = new Point(528, 44);
@@ -78,7 +78,7 @@
             AutoSliderGroup.BackColor = SystemColors.ControlLight;
             AutoSliderGroup.Controls.Add(label2);
             AutoSliderGroup.Controls.Add(label1);
-            AutoSliderGroup.Controls.Add(checkBox4);
+            AutoSliderGroup.Controls.Add(AutoSlide_Checkbox);
             AutoSliderGroup.Controls.Add(numericUpDown1);
             AutoSliderGroup.Location = new Point(185, 75);
             AutoSliderGroup.Name = "AutoSliderGroup";
@@ -107,17 +107,17 @@
             label1.TabIndex = 6;
             label1.Text = "DURATION : ";
             // 
-            // checkBox4
+            // AutoSlide_Checkbox
             // 
-            checkBox4.AutoSize = true;
-            checkBox4.CheckAlign = ContentAlignment.MiddleRight;
-            checkBox4.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            checkBox4.Location = new Point(27, 43);
-            checkBox4.Name = "checkBox4";
-            checkBox4.Size = new Size(183, 30);
-            checkBox4.TabIndex = 4;
-            checkBox4.Text = "AUTO SLİDE";
-            checkBox4.UseVisualStyleBackColor = true;
+            AutoSlide_Checkbox.AutoSize = true;
+            AutoSlide_Checkbox.CheckAlign = ContentAlignment.MiddleRight;
+            AutoSlide_Checkbox.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            AutoSlide_Checkbox.Location = new Point(27, 43);
+            AutoSlide_Checkbox.Name = "AutoSlide_Checkbox";
+            AutoSlide_Checkbox.Size = new Size(183, 30);
+            AutoSlide_Checkbox.TabIndex = 4;
+            AutoSlide_Checkbox.Text = "AUTO SLİDE";
+            AutoSlide_Checkbox.UseVisualStyleBackColor = true;
             // 
             // numericUpDown1
             // 
@@ -127,29 +127,29 @@
             numericUpDown1.Size = new Size(77, 35);
             numericUpDown1.TabIndex = 5;
             // 
-            // Switchitems_Button
+            // Switchitems_Checkbox
             // 
-            Switchitems_Button.AutoSize = true;
-            Switchitems_Button.CheckAlign = ContentAlignment.MiddleRight;
-            Switchitems_Button.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Switchitems_Button.Location = new Point(482, 39);
-            Switchitems_Button.Name = "Switchitems_Button";
-            Switchitems_Button.Size = new Size(216, 30);
-            Switchitems_Button.TabIndex = 3;
-            Switchitems_Button.Text = "SWITCH ITEMS";
-            Switchitems_Button.UseVisualStyleBackColor = true;
+            Switchitems_Checkbox.AutoSize = true;
+            Switchitems_Checkbox.CheckAlign = ContentAlignment.MiddleRight;
+            Switchitems_Checkbox.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Switchitems_Checkbox.Location = new Point(482, 39);
+            Switchitems_Checkbox.Name = "Switchitems_Checkbox";
+            Switchitems_Checkbox.Size = new Size(216, 30);
+            Switchitems_Checkbox.TabIndex = 3;
+            Switchitems_Checkbox.Text = "SWITCH ITEMS";
+            Switchitems_Checkbox.UseVisualStyleBackColor = true;
             // 
-            // ShowAnswers_Button
+            // ShowAnswers_Checkbox
             // 
-            ShowAnswers_Button.AutoSize = true;
-            ShowAnswers_Button.CheckAlign = ContentAlignment.MiddleRight;
-            ShowAnswers_Button.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            ShowAnswers_Button.Location = new Point(223, 39);
-            ShowAnswers_Button.Name = "ShowAnswers_Button";
-            ShowAnswers_Button.Size = new Size(233, 30);
-            ShowAnswers_Button.TabIndex = 2;
-            ShowAnswers_Button.Text = "SHOW ANSWERS";
-            ShowAnswers_Button.UseVisualStyleBackColor = true;
+            ShowAnswers_Checkbox.AutoSize = true;
+            ShowAnswers_Checkbox.CheckAlign = ContentAlignment.MiddleRight;
+            ShowAnswers_Checkbox.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            ShowAnswers_Checkbox.Location = new Point(223, 39);
+            ShowAnswers_Checkbox.Name = "ShowAnswers_Checkbox";
+            ShowAnswers_Checkbox.Size = new Size(233, 30);
+            ShowAnswers_Checkbox.TabIndex = 2;
+            ShowAnswers_Checkbox.Text = "SHOW ANSWERS";
+            ShowAnswers_Checkbox.UseVisualStyleBackColor = true;
             // 
             // EditButton
             // 
@@ -160,13 +160,14 @@
             EditButton.TabIndex = 1;
             EditButton.Text = "Edit";
             EditButton.UseVisualStyleBackColor = true;
+            EditButton.Click += EditButton_Click;
             // 
             // Random_Checkbox
             // 
             Random_Checkbox.AutoSize = true;
             Random_Checkbox.CheckAlign = ContentAlignment.MiddleRight;
             Random_Checkbox.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Random_Checkbox.Location = new Point(45, 39);
+            Random_Checkbox.Location = new Point(22, 39);
             Random_Checkbox.Name = "Random_Checkbox";
             Random_Checkbox.Size = new Size(148, 30);
             Random_Checkbox.TabIndex = 0;
@@ -183,6 +184,7 @@
             Reveal_Button.TabIndex = 5;
             Reveal_Button.Text = "Reveal";
             Reveal_Button.UseVisualStyleBackColor = false;
+            Reveal_Button.Click += Reveal_Button_Click;
             // 
             // Next_Button
             // 
@@ -242,9 +244,9 @@
         private Button Open_List_Button;
         private GroupBox groupBox1;
         private CheckBox Random_Checkbox;
-        private CheckBox checkBox4;
-        private CheckBox Switchitems_Button;
-        private CheckBox ShowAnswers_Button;
+        private CheckBox AutoSlide_Checkbox;
+        private CheckBox Switchitems_Checkbox;
+        private CheckBox ShowAnswers_Checkbox;
         private Button EditButton;
         private NumericUpDown numericUpDown1;
         private Label label1;
