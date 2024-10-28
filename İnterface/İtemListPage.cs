@@ -13,6 +13,8 @@ namespace İnterface
     public partial class İtemListPage : Form
     {
         DataAccessLayer _dataAccessLayer = new DataAccessLayer();
+        Form1 _form1Page = new Form1();
+
         public İtemListPage()
         {
             InitializeComponent();
@@ -23,6 +25,9 @@ namespace İnterface
             var data = (List<EntityLayer>)dataGridView1.DataSource;
 
             _dataAccessLayer.Save(data);
+
+            _form1Page._AllItemsList = _dataAccessLayer.GetAll();
+
             MessageBox.Show("Data saved successfully!");
            
             Visible = false;

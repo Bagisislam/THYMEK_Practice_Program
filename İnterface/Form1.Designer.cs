@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             Open_List_Button = new Button();
             groupBox1 = new GroupBox();
             AutoSliderGroup = new GroupBox();
             label2 = new Label();
             label1 = new Label();
             AutoSlide_Checkbox = new CheckBox();
-            numericUpDown1 = new NumericUpDown();
+            TimeNumber = new NumericUpDown();
             Switchitems_Checkbox = new CheckBox();
             ShowAnswers_Checkbox = new CheckBox();
             EditButton = new Button();
@@ -43,15 +44,16 @@
             Next_Button = new Button();
             Name_Lable = new Label();
             Number_Label = new Label();
+            Timer = new System.Windows.Forms.Timer(components);
             groupBox1.SuspendLayout();
             AutoSliderGroup.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)TimeNumber).BeginInit();
             SuspendLayout();
             // 
             // Open_List_Button
             // 
             Open_List_Button.Font = new Font("Times New Roman", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Open_List_Button.Location = new Point(29, 32);
+            Open_List_Button.Location = new Point(56, 44);
             Open_List_Button.Name = "Open_List_Button";
             Open_List_Button.Size = new Size(322, 59);
             Open_List_Button.TabIndex = 1;
@@ -79,7 +81,7 @@
             AutoSliderGroup.Controls.Add(label2);
             AutoSliderGroup.Controls.Add(label1);
             AutoSliderGroup.Controls.Add(AutoSlide_Checkbox);
-            AutoSliderGroup.Controls.Add(numericUpDown1);
+            AutoSliderGroup.Controls.Add(TimeNumber);
             AutoSliderGroup.Location = new Point(185, 75);
             AutoSliderGroup.Name = "AutoSliderGroup";
             AutoSliderGroup.Size = new Size(549, 90);
@@ -119,13 +121,13 @@
             AutoSlide_Checkbox.Text = "AUTO SLİDE";
             AutoSlide_Checkbox.UseVisualStyleBackColor = true;
             // 
-            // numericUpDown1
+            // TimeNumber
             // 
-            numericUpDown1.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            numericUpDown1.Location = new Point(405, 37);
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(77, 35);
-            numericUpDown1.TabIndex = 5;
+            TimeNumber.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            TimeNumber.Location = new Point(405, 37);
+            TimeNumber.Name = "TimeNumber";
+            TimeNumber.Size = new Size(77, 35);
+            TimeNumber.TabIndex = 5;
             // 
             // Switchitems_Checkbox
             // 
@@ -153,13 +155,16 @@
             // 
             // EditButton
             // 
+            EditButton.BackColor = SystemColors.AppWorkspace;
             EditButton.Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            EditButton.Location = new Point(22, 111);
+            EditButton.ForeColor = SystemColors.HotTrack;
+            EditButton.Location = new Point(22, 75);
             EditButton.Name = "EditButton";
-            EditButton.Size = new Size(129, 48);
+            EditButton.Size = new Size(129, 84);
             EditButton.TabIndex = 1;
-            EditButton.Text = "Edit";
-            EditButton.UseVisualStyleBackColor = true;
+            EditButton.Text = "Save Changes";
+            EditButton.UseVisualStyleBackColor = false;
+            EditButton.Click += EditButton_Click_1;
             // 
             // Random_Checkbox
             // 
@@ -200,7 +205,7 @@
             // Name_Lable
             // 
             Name_Lable.BackColor = SystemColors.ScrollBar;
-            Name_Lable.Font = new Font("Times New Roman", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Name_Lable.Font = new Font("Times New Roman", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Name_Lable.Location = new Point(713, 275);
             Name_Lable.Name = "Name_Lable";
             Name_Lable.Size = new Size(439, 131);
@@ -216,6 +221,11 @@
             Number_Label.Size = new Size(439, 130);
             Number_Label.TabIndex = 8;
             Number_Label.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // Timer
+            // 
+            Timer.Interval = 1000;
+            Timer.Tick += Timer_Tick;
             // 
             // Form1
             // 
@@ -235,7 +245,7 @@
             groupBox1.PerformLayout();
             AutoSliderGroup.ResumeLayout(false);
             AutoSliderGroup.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)TimeNumber).EndInit();
             ResumeLayout(false);
         }
 
@@ -247,7 +257,7 @@
         private CheckBox Switchitems_Checkbox;
         private CheckBox ShowAnswers_Checkbox;
         private Button EditButton;
-        private NumericUpDown numericUpDown1;
+        private NumericUpDown TimeNumber;
         private Label label1;
         private Label label2;
         private Button Reveal_Button;
@@ -255,5 +265,6 @@
         private GroupBox AutoSliderGroup;
         private Label Name_Lable;
         private Label Number_Label;
+        private System.Windows.Forms.Timer Timer;
     }
 }
