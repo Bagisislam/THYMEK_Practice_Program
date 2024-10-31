@@ -31,6 +31,7 @@
             components = new System.ComponentModel.Container();
             Open_List_Button = new Button();
             groupBox1 = new GroupBox();
+            Start_Button = new Button();
             AutoSliderGroup = new GroupBox();
             label2 = new Label();
             label1 = new Label();
@@ -45,7 +46,7 @@
             Name_Lable = new Label();
             Number_Label = new Label();
             Timer = new System.Windows.Forms.Timer(components);
-            Start_Button = new Button();
+            label3 = new Label();
             groupBox1.SuspendLayout();
             AutoSliderGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TimeNumber).BeginInit();
@@ -76,6 +77,18 @@
             groupBox1.TabIndex = 2;
             groupBox1.TabStop = false;
             groupBox1.Text = "Settings";
+            // 
+            // Start_Button
+            // 
+            Start_Button.BackColor = SystemColors.MenuHighlight;
+            Start_Button.Font = new Font("Times New Roman", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Start_Button.Location = new Point(22, 165);
+            Start_Button.Name = "Start_Button";
+            Start_Button.Size = new Size(148, 62);
+            Start_Button.TabIndex = 8;
+            Start_Button.Text = "Start From The Beginning";
+            Start_Button.UseVisualStyleBackColor = false;
+            Start_Button.Click += Start_Button_Click;
             // 
             // AutoSliderGroup
             // 
@@ -229,23 +242,23 @@
             Timer.Interval = 1000;
             Timer.Tick += Timer_Tick;
             // 
-            // Start_Button
+            // label3
             // 
-            Start_Button.BackColor = SystemColors.MenuHighlight;
-            Start_Button.Font = new Font("Times New Roman", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Start_Button.Location = new Point(22, 165);
-            Start_Button.Name = "Start_Button";
-            Start_Button.Size = new Size(148, 62);
-            Start_Button.TabIndex = 8;
-            Start_Button.Text = "Start From The Beginning";
-            Start_Button.UseVisualStyleBackColor = false;
-            Start_Button.Click += Start_Button_Click;
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.ForeColor = SystemColors.ButtonShadow;
+            label3.Location = new Point(1749, 853);
+            label3.Name = "label3";
+            label3.Size = new Size(111, 21);
+            label3.TabIndex = 9;
+            label3.Text = "Made By Islam";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1872, 883);
+            Controls.Add(label3);
             Controls.Add(Number_Label);
             Controls.Add(Name_Lable);
             Controls.Add(Next_Button);
@@ -261,6 +274,7 @@
             AutoSliderGroup.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)TimeNumber).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -281,5 +295,6 @@
         private Label Number_Label;
         private System.Windows.Forms.Timer Timer;
         private Button Start_Button;
+        private Label label3;
     }
 }
