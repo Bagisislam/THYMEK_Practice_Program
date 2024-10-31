@@ -45,6 +45,7 @@
             Name_Lable = new Label();
             Number_Label = new Label();
             Timer = new System.Windows.Forms.Timer(components);
+            Start_Button = new Button();
             groupBox1.SuspendLayout();
             AutoSliderGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)TimeNumber).BeginInit();
@@ -63,14 +64,15 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(Start_Button);
             groupBox1.Controls.Add(AutoSliderGroup);
             groupBox1.Controls.Add(Switchitems_Checkbox);
             groupBox1.Controls.Add(ShowAnswers_Checkbox);
             groupBox1.Controls.Add(EditButton);
             groupBox1.Controls.Add(Random_Checkbox);
-            groupBox1.Location = new Point(528, 44);
+            groupBox1.Location = new Point(528, 12);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(760, 187);
+            groupBox1.Size = new Size(760, 244);
             groupBox1.TabIndex = 2;
             groupBox1.TabStop = false;
             groupBox1.Text = "Settings";
@@ -82,7 +84,7 @@
             AutoSliderGroup.Controls.Add(label1);
             AutoSliderGroup.Controls.Add(AutoSlide_Checkbox);
             AutoSliderGroup.Controls.Add(TimeNumber);
-            AutoSliderGroup.Location = new Point(185, 75);
+            AutoSliderGroup.Location = new Point(185, 116);
             AutoSliderGroup.Name = "AutoSliderGroup";
             AutoSliderGroup.Size = new Size(549, 90);
             AutoSliderGroup.TabIndex = 7;
@@ -160,7 +162,7 @@
             EditButton.ForeColor = SystemColors.HotTrack;
             EditButton.Location = new Point(22, 75);
             EditButton.Name = "EditButton";
-            EditButton.Size = new Size(129, 84);
+            EditButton.Size = new Size(148, 84);
             EditButton.TabIndex = 1;
             EditButton.Text = "Save Changes";
             EditButton.UseVisualStyleBackColor = false;
@@ -227,6 +229,18 @@
             Timer.Interval = 1000;
             Timer.Tick += Timer_Tick;
             // 
+            // Start_Button
+            // 
+            Start_Button.BackColor = SystemColors.MenuHighlight;
+            Start_Button.Font = new Font("Times New Roman", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Start_Button.Location = new Point(22, 165);
+            Start_Button.Name = "Start_Button";
+            Start_Button.Size = new Size(148, 62);
+            Start_Button.TabIndex = 8;
+            Start_Button.Text = "Start From The Beginning";
+            Start_Button.UseVisualStyleBackColor = false;
+            Start_Button.Click += Start_Button_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -266,5 +280,6 @@
         private Label Name_Lable;
         private Label Number_Label;
         private System.Windows.Forms.Timer Timer;
+        private Button Start_Button;
     }
 }

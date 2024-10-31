@@ -19,6 +19,7 @@ namespace İnterface
         bool _IsShowAnswered = false;
         bool _IsSwitched = false;
         bool _IsAutoSlided = false;
+        bool _IsNextButton = false;
 
         public Form1()
         {
@@ -121,12 +122,13 @@ namespace İnterface
                     ChosenMethod();
                     if (ChosenMethod().Name == null)
                     {
-                        MessageBox.Show("Please Slowly Press The Buttons");
+                        MessageBox.Show("Please Be Sure The Current Value Is Not Empty");
                         ChosenMethod();
                     }
                 }
                 else
                 {
+                    Thread.Sleep(50);
                     Number_Label.Text = string.Empty;
                     Name_Lable.Text = ChosenMethod().Name.ToUpper();
                 }
@@ -140,12 +142,13 @@ namespace İnterface
                     ChosenMethod();
                     if (ChosenMethod().Name == null || ChosenMethod().Number == 0)
                     {
-                        MessageBox.Show("Please Slowly Press The Buttons");
+                        MessageBox.Show("Please Be Sure The Current Value Is Not Empty");
                         ChosenMethod();
                     }
                 }
                 else
                 {
+                    Thread.Sleep(50);
                     Name_Lable.Text = ChosenMethod().Name.ToUpper();
                     Number_Label.Text = ChosenMethod().Number.ToString();
                 }
@@ -156,6 +159,8 @@ namespace İnterface
         private void Next_Button_Click(object sender, EventArgs e)
         {
             Thread.Sleep(100);
+
+            _IsNextButton = true;
 
             _RandomNumber = RandomNumberGenerator();
 
@@ -195,13 +200,40 @@ namespace İnterface
         {
             ++_TheTime;
 
-            if (TimeNumber.Value == _TheTime) 
+            if (TimeNumber.Value == _TheTime)
             {
-                Timer.Stop();
-                Timer.Enabled = false;
+                _TheTime = 0;
+
+                if (_IsNextButton == false)
+                {
+                    _RandomNumber = RandomNumberGenerator();
+
+                    _line_İndex++;
+
+                    if (_line_İndex >= 90)
+                    {
+                        _line_İndex = 0;
+                    }
+
+                    if (_IsShowAnswered)
+                    {
+                        FinalResult(3);
+                    }
+                    else
+                    {
+                        if (!_IsSwitched)
+                        {
+                            FinalResult(1);
+                        }
+                        else
+                        {
+                            FinalResult(2);
+                        }
+                    }
+                }
+                _IsNextButton = false;
             }
-            
-            MessageBox.Show(_TheTime.ToString());
+
         }
 
         private void EditButton_Click_1(object sender, EventArgs e)
@@ -213,7 +245,7 @@ namespace İnterface
 
             if (_IsAutoSlided == true)
             {
-                if (TimeNumber.Value <=0)
+                if (TimeNumber.Value <= 0)
                 {
                     MessageBox.Show("The Given Number Cannot Be Less Or Equal To 0");
                     AutoSlide_Checkbox.Checked = false;
@@ -223,11 +255,32 @@ namespace İnterface
                 {
                     Timer.Enabled = true;
                 }
-                
+
             }
-            else 
+            else
             {
                 Timer.Enabled = false;
+            }
+        }
+
+        private void Start_Button_Click(object sender, EventArgs e)
+        {
+            _line_İndex = 0;
+
+            if (_IsShowAnswered)
+            {
+                FinalResult(3);
+            }
+            else
+            {
+                if (!_IsSwitched)
+                {
+                    FinalResult(1);
+                }
+                else
+                {
+                    FinalResult(2);
+                }
             }
         }
     }
