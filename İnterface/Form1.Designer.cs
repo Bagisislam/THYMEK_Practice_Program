@@ -251,7 +251,7 @@
             label3.Name = "label3";
             label3.Size = new Size(111, 21);
             label3.TabIndex = 9;
-            label3.Text = "Made By Islam";
+            label3.Text = "Made By Bagis";
             // 
             // Form1
             // 
